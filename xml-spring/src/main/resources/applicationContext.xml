@@ -1,0 +1,32 @@
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.example.xmlspring.controllers"/>
+
+    <!-- Определение бина для HwController -->
+    <bean id="hwController" class="com.example.xmlspring.controllers.HwController">
+
+    </bean>
+
+    <!-- Определение бина для FirstBean -->
+    <bean id="firstBean" class="com.example.xmlspring.modells.FirstBean">
+        <constructor-arg ref="prototypeBean"/>
+    </bean>
+
+    <!-- Определение бина для PrototypeBean -->
+    <bean id="prototypeBean" class="com.example.xmlspring.modells.PrototypeBean" scope="prototype"/>
+
+    <!-- Определение бина для RequestScopeBean -->
+    <bean id="requestScopeBean" class="com.example.xmlspring.modells.RequestScopeBean" scope="request"/>
+
+    <!-- Определение бина для SecondBean -->
+    <bean id="secondBean" class="com.example.xmlspring.modells.SecondBean">
+        <constructor-arg ref="prototypeBean"/>
+    </bean>
+</beans>
